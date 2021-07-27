@@ -1,3 +1,4 @@
+import 'package:api_project/API/homePage.dart';
 import 'package:api_project/method/methods.dart';
 import 'package:api_project/models/Album.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,14 @@ class _postmethodState extends State<postmethod> {
           },
           child: const Text('Create Data'),
         ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => firstPage()));
+          },
+          child: const Text('Go Back'),
+        ),
+
       ],
     );
   }

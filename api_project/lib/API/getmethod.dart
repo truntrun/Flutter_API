@@ -30,18 +30,29 @@ class _getmethodState extends State<getmethod> {
           title: const Text('Fetch Data Example'),
         ),
         body: Center(
-          child: FutureBuilder<Album>(
-            future: futureAlbum,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Text(snapshot.data!.title);
-              } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              }
-
-              // By default, show a loading spinner.
-              return const CircularProgressIndicator();
-            },
+          child: Column(
+            children:<Widget>[
+              Container(
+                child: FutureBuilder<Album>(
+                future: futureAlbum,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Text(snapshot.data!.title);
+                  } else if (snapshot.hasError) {
+                    return Text('${snapshot.error}');
+                  }
+                  // By default, show a loading spinner.
+                  return const CircularProgressIndicator();
+                },
+            ),
+              ),
+              Container(
+                child: ElevatedButton(
+                    child: Text('Go back'),
+                    onPressed: () {   Navigator.pop(context); }
+                ),
+              ),
+          ]
           ),
         ),
       ),
