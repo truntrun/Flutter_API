@@ -1,12 +1,10 @@
-import 'dart:async';
-import 'dart:convert';
 
+
+import 'package:api_project/API/getmethod.dart';
+import 'package:api_project/API/postmethod.dart';
+import 'package:api_project/API/putmethod.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
-import 'method/methods.dart';
-import 'models/Album.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -26,28 +24,67 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Update Data Example',
+      title: 'API Example',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Update Data Example'),
+          title: const Text('API Example'),
         ),
-        body: Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(8.0),
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => getMethod()),
-                );
-              },
-            child: Text("GET"),
-          )
+        body: Center(
+          child: Column(
+            children:<Widget> [
+              Center(
+                child: Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(8.0),
+                    margin: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => getmethod()),
+                      );
+                    },
+                  child: Text("GET"),
+                )
+                ),
+              ),
+              Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => putmethod()),
+                      );
+                    },
+                    child: Text("PUT"),
+                  )
+              ),
+              Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => postmethod()),
+                      );
+                    },
+                    child: Text("POST"),
+                  )
+              ),
 
+          ]
           ),
+        ),
+
+
         ),
 
     );
